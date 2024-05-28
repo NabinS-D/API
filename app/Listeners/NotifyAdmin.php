@@ -19,8 +19,6 @@ class NotifyAdmin
     {
         \Log::info('Handling ProjectAddedEvent for project: ', ['project' => $event->project]);
        
-        Notification::send($event->user, new ProjectAdd($event->project,$event->user));
-       
-        
+        Notification::send($event->user, new ProjectAdd($event->project,$event->user));    
     }
 }

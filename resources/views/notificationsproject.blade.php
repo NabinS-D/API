@@ -90,23 +90,23 @@
             
                     // Subscribe to the private channel
                     Echo.private(`user.${userId}`)
-                        .listen('ProjectAddedEvent', (event) => {
+                        .listen('ProjectAddedEvent', (e) => {
                             console.log('ProjectAddedEvent received!');
                             // Display the notification to the user
-                            showNotification(event);
+                            showNotification(e);
                         });
                 }
     
                 // Function to show notification
-                function showNotification(event) {
+                function showNotification(e) {
+                    console.log('New Project notification:', e);
                     // Display the notification
                     let notification = new Notification('New Project Added', {
-                        body: `Project "${event.project.project_name}" has been added.`,
+                        body: `Project "${e.project.project_name}" has been added.`,
                     });
                 }
             });
         </script>
-
     @vite(['resources/js/app.js'])
 </body>
 </html>

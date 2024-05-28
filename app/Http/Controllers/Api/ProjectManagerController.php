@@ -47,11 +47,9 @@ class ProjectManagerController extends Controller
         }
         else
         {
-            $projectname = $request->input('project_name');
-            $description = $request->input('description');
             $projectadd = new Project();
-            $projectadd->project_name = $projectname;
-            $projectadd->description = $description;
+            $projectadd->project_name = $request->input('project_name');
+            $projectadd->description = $request->input('description');
     
             if($projectadd->save())
             {
@@ -129,7 +127,7 @@ class ProjectManagerController extends Controller
                      return response()->json(['message' => 'The selected project has been updated successfully'], 200);
 
                 }
-                catch(Exception $e)
+                catch(\Exception $e)
                 {
                     DB::rollBack(); 
                     return response()->json(['message' => $e->getMessage()],500);
@@ -155,7 +153,7 @@ class ProjectManagerController extends Controller
                     db::commit();
                     return response()->json(['message'=> 'The selected project has been successfully deleted.'],200);
                 }
-                catch(Exception $e)
+                catch(\Exception $e)
                 {
                     DB::rollBack();
                     return response()->json(['message'=> $e->getMessage()],500);
