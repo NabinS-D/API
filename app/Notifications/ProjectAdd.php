@@ -47,9 +47,9 @@ class ProjectAdd extends Notification implements ShouldQueue
     {
         return new BroadcastMessage([
             'project' => [
-                'project_name' => $this->project->project_name, // Accessing project_name using array notation
-                'description' => $this->project->description, // Accessing description using array notation
-                'project_id' => $this->project->project_id, // Accessing project_id using array notation
+                'project_name' => $this->project->project_name, 
+                'description' => $this->project->description, 
+                'project_id' => $this->project->project_id,
             ]
         ]);
     }
